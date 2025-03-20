@@ -11,9 +11,6 @@ public class TaskMapper implements RequestDtoMapper<TaskRequestDto, Task>, Respo
     public Task mapToModel(TaskRequestDto dto) {
         Task task = new Task();
         task.setDescription(dto.getDescription());
-        task.setStatus(dto.getStatus());
-        task.setCreatedAt(dto.getCreatedAt());
-        task.setClosedAt(dto.getClosedAt());
         return task;
     }
 
