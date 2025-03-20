@@ -9,6 +9,7 @@ public class TaskResponseDto {
     private TaskStatus status;
     private LocalDateTime createdAt;
     private LocalDateTime closedAt;
+    private Long executionTime;
 
     public LocalDateTime getClosedAt() {
         return closedAt;
@@ -48,5 +49,13 @@ public class TaskResponseDto {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Long getExecutionTime() {
+        return executionTime;
+    }
+
+    public void setExecutionTime(Long executionTime) {
+        this.executionTime = executionTime;
     }
 }

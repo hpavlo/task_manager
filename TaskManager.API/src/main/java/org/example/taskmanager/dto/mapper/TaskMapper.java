@@ -5,6 +5,8 @@ import org.example.taskmanager.dto.TaskResponseDto;
 import org.example.taskmanager.model.Task;
 import org.springframework.stereotype.Component;
 
+import java.time.Duration;
+
 @Component
 public class TaskMapper implements RequestDtoMapper<TaskRequestDto, Task>, ResponseDtoMapper<TaskResponseDto, Task> {
     @Override
@@ -22,6 +24,10 @@ public class TaskMapper implements RequestDtoMapper<TaskRequestDto, Task>, Respo
         dto.setStatus(task.getStatus());
         dto.setCreatedAt(task.getCreatedAt());
         dto.setClosedAt(task.getClosedAt());
+        if (task.getCreatedAt() != null && task.getClosedAt() != null) {
+            Duration duration = Duration.between(task.getCreatedAt(), task.getClosedAt());
+            dto.setExecutionTime(duration.toMillis());
+        }
         return dto;
     }
 }
